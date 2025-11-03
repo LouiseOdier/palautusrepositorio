@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 class PlayerReaderStub:
@@ -20,13 +20,13 @@ class TestStatisticsService(unittest.TestCase):
         self.assertEqual(pelaajat, ["Semenko", "Kurri", "Gretzky"])
 
     
-    def test_korkeimmat_pisteet(self):
-        tiimi=self.stats.top(2)
-        pelaajat=[]
-        for player in tiimi:
-            pelaajat.append(player.name)
+    #def test_korkeimmat_pisteet(self):
+    #    tiimi=self.stats.top(2)
+    #    pelaajat=[]
+    #    for player in tiimi:
+    #        pelaajat.append(player.name)
 
-        self.assertEqual(pelaajat, ["Gretzky", "Lemieux", "Yzerman"])
+    #    self.assertEqual(pelaajat, ["Gretzky", "Lemieux", "Yzerman"])
 
     def test_haku(self):
         tiimi=self.stats.search("Semenko")
@@ -37,3 +37,29 @@ class TestStatisticsService(unittest.TestCase):
         tiimi=self.stats.search("kissa")
 
         self.assertEqual(tiimi, None)
+
+    def test_sort_by_points(self):
+        tiimi=self.stats.top(2, SortBy.POINTS)
+        pelaajat=[]
+        for player in tiimi:
+            pelaajat.append(player.name)
+
+        self.assertEqual(pelaajat, ["Gretzky", "Lemieux", "Yzerman"])
+
+    def test_sort_by_goals(self):
+        tiimi=self.stats.top(2, SortBy.GOALS)
+        pelaajat=[]
+        for player in tiimi:
+            pelaajat.append(player.name)
+
+        self.assertEqual(pelaajat, ["Lemieux", "Yzerman", "Kurri"])
+
+    def test_sort_by_assits(self):
+        tiimi=self.stats.top(2, SortBy.ASSISTS)
+        pelaajat=[]
+        for player in tiimi:
+            pelaajat.append(player.name)
+
+        self.assertEqual(pelaajat, ["Gretzky", "Yzerman", "Lemieux"])
+
+    
