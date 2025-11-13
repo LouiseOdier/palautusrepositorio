@@ -1,5 +1,9 @@
 # tehdään alussa importit
+
 # Testi Muutos
+
+# Bugikorjaus
+
 from logger import logger
 from summa import summa
 from erotus import erotus
