@@ -1,4 +1,4 @@
-#Retrospektiivi
+# Retrospektiivi
 
 Retrospektiivitekniikoita on useita. Tekniikasta riippuen retrospektiivi voi kestää 10 minuutista 120 minuuttiin.
 
