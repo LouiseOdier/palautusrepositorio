@@ -5,8 +5,8 @@ class TennisGame:
         self.player2_name = player2_name
 
     def won_point(self, player_name):
-        new_result = self.players[player_name]+1
-        self.players[player_name]=new_result
+        new_result = self.players[player_name] + 1
+        self.players[player_name] = new_result
 
     def get_score(self):
 
@@ -16,17 +16,17 @@ class TennisGame:
 
         def even_scores(scores):
             result = {0: "Love-All", 1: "Fifteen-All", 2: "Thirty-All"}
-            if scores<3:
+            if scores < 3:
                 return result[scores]
             else:
                 return "Deuce"
         
         def high_scores(player1, player2):
-            if self.players[player1]>self.players[player2]:
-                leader, looser = player1, player2
+            if self.players[player1] > self.players[player2]:
+                leader, loser = player1, player2
             else:
-                leader, looser = player2, player1
-            if self.players[leader]-self.players[looser]==1:
+                leader, loser = player2, player1
+            if self.players[leader] - self.players[loser] == 1:
                 return f"Advantage {leader}"
             else:
                 return f"Win for {leader}"
